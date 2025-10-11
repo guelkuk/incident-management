@@ -1,0 +1,37 @@
+.nav {
+  width: 200px;
+  background-color: #004157;
+  color: #C5E0E0;
+  padding: 10px;
+  height: 100vh;
+  justify-content: space-evenly;
+  align-items: center;
+
+  a{
+    display: flex;
+    align-content: space-evenly;
+    gap: 20px;
+    align-items: center;
+    color: darkgray;
+    transition: all 0.5s;
+    padding: 10px 10px; /* dikey ve yatay boşluk */
+  }
+  a:hover{
+    background-color: #F0EBDA;
+  }
+
+  .top-section{
+    display: flex;
+    .bars-icon{
+      padding-left: 100px;
+      padding-top: 20px;
+    }
+  }
+
+  nav{
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+    gap : 40px;
+  }
+}
