@@ -7,31 +7,83 @@
   justify-content: space-evenly;
   align-items: center;
 
-  a{
+
+  a {
     display: flex;
     align-content: space-evenly;
     gap: 20px;
     align-items: center;
     color: darkgray;
     transition: all 0.5s;
-    padding: 10px 10px; /* dikey ve yatay boşluk */
-  }
-  a:hover{
-    background-color: #F0EBDA;
+    padding: 10px 10px;
   }
 
-  .top-section{
+  a:hover {
+    background-color: #F0EBDA;
+    color: rgba(0, 0, 0, 0.67);
+  }
+
+  a.home-link {
+    &:after {
+      content: "Home";
+    }
+  }
+
+  a.newIncident-link {
+    &:after {
+      content: "New Incident";
+    }
+  }
+
+  a.myIncidents-link {
+    &:after {
+      content: "My Incidents";
+    }
+  }
+
+  a.settings-link {
+    &:after {
+      content: "Settings";
+    }
+  }
+
+  .top-section {
     display: flex;
-    .bars-icon{
+
+    .bars-icon {
       padding-left: 100px;
       padding-top: 20px;
     }
   }
 
-  nav{
+  .bars-icon {
+    display: block;
+  }
+
+  nav {
     display: flex;
     flex-direction: column;
     padding-top: 50px;
-    gap : 40px;
+    gap: 40px;
+  }
+}
+
+@media screen  /*and (max-width: 1000px)*/ {
+  .nav {
+    position: fixed;
+    left: -173px;
+    transition: left 0.4s ease;
+
+    &.mobile-show {
+      left: 0;
+    }
+
+    .bars-icon {
+      display: block;
+      position: absolute;
+      left: 75px;
+      color: white;
+      cursor: pointer;
+    }
   }
 }

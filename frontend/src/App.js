@@ -12,8 +12,8 @@ function App() {
             <Route path="/" element={<Layout />}>
                 <Route index element={<Home />} />
             </Route>
-            <Route path="/" element={<MyIncident />}></Route>
-            <Route path="/" element={<NewIncident />}></Route>
+            <Route path="newincident" element={<NewIncident />}></Route>
+            <Route path="myincident" element={<MyIncident />}></Route>
         </Routes>
         </Router>
     );
