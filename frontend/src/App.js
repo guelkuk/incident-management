@@ -8,13 +8,13 @@ import NewIncident from './components/NewIncident/NewIncident';
 function App() {
     return (
         <Router>
-        <Routes>
-            <Route path="/" element={<Layout />}>
-                <Route index element={<Home />} />
-            </Route>
-            <Route path="newincident" element={<NewIncident />}></Route>
-            <Route path="myincident" element={<MyIncident />}></Route>
-        </Routes>
+            <Routes>
+                <Route path="/" element={<Layout />}>
+                    <Route index element={<Home />} />
+                    <Route path="newincident" element={<NewIncident />}/>
+                    <Route path="myincident" element={<MyIncident />}/>
+                </Route>
+            </Routes>
         </Router>
     );
 }

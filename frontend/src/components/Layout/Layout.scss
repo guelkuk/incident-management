@@ -5,10 +5,9 @@
 }
 
 .page {
-  flex: 1;
-  margin-top: 250px;
-  margin-left: 40%;
-  //padding: 70px;
+  margin-left: 220px;
+  padding: 40px;
   background-color: #C5E0E0;
-  display: flow;
+  display: flex;
+  flex-direction: column;
 }
