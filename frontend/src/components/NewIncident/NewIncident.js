@@ -2,7 +2,7 @@ import './NewIncident.scss'
 import React from 'react'
 import { useForm } from "react-hook-form";
 
-const   NewIncident = () => {
+const NewIncident = () => {
     const { handleSubmit, register, reset } = useForm();
 
     const onSubmit = async values => {
@@ -18,8 +18,6 @@ const   NewIncident = () => {
                     category: values.category,
                     status: values.status,
                     assignedTo: values.assignedTo,
-                    createdAt: values.createdAt,
-                    updatedAt: values.updatedAt
                 })
             });
             if (!result.ok) throw new Error('Failed to add incident');
@@ -36,20 +34,16 @@ const   NewIncident = () => {
         <div><h1>Add new Incident</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <label>
-                    User-ID:
-                    <input type="number" />
-                </label>
-                <label>
                     Title:
-                    <input type="text" />
+                    <input type="text" {...register("title", { required: true })} />
                 </label>
                 <label>
                     Description:
-                    <input type="text" />
+                    <input type="text" {...register("description")} />
                 </label>
                 <label>
                     Category
-                    <select>
+                    <select {...register("category")}  defaultValue="Network">
                         <option value="Network">Network</option>
                         <option value="Software">Software</option>
                         <option value="Hardware">Hardware</option>
@@ -60,7 +54,7 @@ const   NewIncident = () => {
                 </label>
                 <label>
                     Status:
-                    <select {...register("status")}>
+                    <select {...register("status")} defaultValue="Open">
                         <option value="Open">Open</option>
                         <option value="In Progress">In Progress</option>
                         <option value="Resolved">Resolved</option>
@@ -69,15 +63,7 @@ const   NewIncident = () => {
                 </label>
                 <label>
                     Assign to:
-                    <input type="text" {...register("assignedTo")} />
-                </label>
-                <label>
-                    Created at:
-                    <input type="Date" {...register("createdAt")} />
-                </label>
-                <label>
-                    Updated at:
-                    <input type="Date" {...register("updatedAt")} />
+                    <input type="text" {...register("assignedTo", { required: true })} />
                 </label>
                 <button type="submit">Submit</button>
             </form>
