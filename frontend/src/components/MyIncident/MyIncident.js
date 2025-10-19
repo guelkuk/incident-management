@@ -1,19 +1,33 @@
 import './MyIncident.scss'
-import React, {useState} from 'react'
+import React, {useState, useEffect } from 'react'
 
 const MyIncident = () => {
     const [search, setSearch] = useState('');
+    const [incidents, setIncidents] = useState([])
     console.log(search)
-
-    const incidents = [
-        { id: 1, title: 'Network down', category: 'Network', status: 'Open', assignedTo: 'Alice', createdAt: '2025-10-10' },
-        { id: 2, title: 'Email not working', category: 'Software', status: 'In Progress', assignedTo: 'Bob', createdAt: '2025-10-12' },
-        { id: 3, title: 'Printer offline', category: 'Hardware', status: 'Resolved', assignedTo: 'Charlie', createdAt: '2025-10-14' },
-    ];
 
     const filtered = incidents.filter(inc =>
         inc.title.toLowerCase().includes(search.toLowerCase())
     );
+
+    const handleDelete = async (deletingInc) => {
+        try {
+            await fetch(`http://incident-management2-env.eba-23pdmwzk.eu-central-1.elasticbeanstalk.com/api/v1/incident/id/${deletingInc.id}`, {
+                method: 'DELETE',
+            });
+            const newIncidents = incidents.filter((inc) => inc !== deletingInc)
+            setIncidents(newIncidents)
+        } catch (err) {
+            console.error("Error deleting incident:", err);
+        }
+    }
+
+    useEffect(() => {
+        fetch('http://incident-management2-env.eba-23pdmwzk.eu-central-1.elasticbeanstalk.com/api/v1/incident')
+            .then(res => res.json())
+            .then(data => setIncidents(data))
+            .catch(err => console.error("Error fetching incidents:", err));
+    }, []);
 
     return(
         <div className='myincident-page'>
@@ -44,8 +58,8 @@ const MyIncident = () => {
                         <td>{inc.assignedTo}</td>
                         <td>{inc.createdAt}</td>
                         <td>
-                            <button className="edit-btn">Edit</button>
-                            <button className="delete-btn">Delete</button>
+                            <button className="edit-btn">Edit </button>
+                            <button onClick={()=> handleDelete(inc)} className="delete-btn">Delete</button>
                         </td>
                     </tr>
                 ))}
