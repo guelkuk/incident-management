@@ -12,7 +12,7 @@ const MyIncident = () => {
 
     const handleDelete = async (deletingInc) => {
         try {
-            await fetch(`http://incident-management2-env.eba-23pdmwzk.eu-central-1.elasticbeanstalk.com/api/v1/incident/id/${deletingInc.id}`, {
+            await fetch(`https://ffl6apaq3d.execute-api.eu-central-1.amazonaws.com/prod/api/v1/incident/id/${deletingInc.id}`, {
                 method: 'DELETE',
             });
             const newIncidents = incidents.filter((inc) => inc !== deletingInc)
@@ -23,7 +23,7 @@ const MyIncident = () => {
     }
 
     useEffect(() => {
-        fetch('http://incident-management2-env.eba-23pdmwzk.eu-central-1.elasticbeanstalk.com/api/v1/incident')
+        fetch('https://ffl6apaq3d.execute-api.eu-central-1.amazonaws.com/prod/api/v1/incident')
             .then(res => res.json())
             .then(data => setIncidents(data))
             .catch(err => console.error("Error fetching incidents:", err));

@@ -7,7 +7,7 @@ const NewIncident = () => {
 
     const onSubmit = async values => {
         try {
-            const result = await fetch('http://incident-management2-env.eba-23pdmwzk.eu-central-1.elasticbeanstalk.com/api/v1/incident', {
+            const result = await fetch('https://ffl6apaq3d.execute-api.eu-central-1.amazonaws.com/prod/api/v1/incident', {
                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
