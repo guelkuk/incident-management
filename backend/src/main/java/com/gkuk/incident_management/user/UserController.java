@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = {
+        "http://localhost:3000",
+        "https://master.d391sbei662o8o.amplifyapp.com"
+})
 @RestController
 @RequestMapping(path = "api/v1/user")
 public class UserController {

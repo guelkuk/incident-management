@@ -8,7 +8,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {"http://localhost:3000",
+        "https://master.d391sbei662o8o.amplifyapp.com"})
 @RestController
 @RequestMapping(path = "api/v1/incident")
 public class IncidentController {
