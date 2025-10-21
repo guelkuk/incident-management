@@ -19,6 +19,9 @@ The application is still in **development**.
 
 ❗Backend endpoints are currently not active.
 
+![Incitra](frontend/screenshots/Incitra.png)
+![Add Incident](frontend/screenshots/add.png)
+
 
 **Frontend Features**
 - Create new incidents  
